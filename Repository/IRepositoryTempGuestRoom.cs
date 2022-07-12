@@ -1,4 +1,5 @@
-﻿using BookingHotel.Models;
+﻿using BookingHotel.DTO;
+using BookingHotel.Models;
 
 namespace BookingHotel.Repository
 {
@@ -7,5 +8,6 @@ namespace BookingHotel.Repository
         bool CheckIfTempRoomExit(int roomId, string guestId);
         List<TempGuestRooms> GetAllForGuest(string guestId);
         int DeleteByGuestID(string id);
+        int EditTempRoom(int id, TempRoomDTO tempRoomDTO);
     }
 }

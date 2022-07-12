@@ -164,6 +164,8 @@ namespace BookingHotel.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        
         [HttpPost("ConfirmReservation")]
         public IActionResult  ConfirmReservation(int reservationId)
         {

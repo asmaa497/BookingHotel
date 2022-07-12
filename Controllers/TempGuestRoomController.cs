@@ -1,4 +1,5 @@
-﻿using BookingHotel.Models;
+﻿using BookingHotel.DTO;
+using BookingHotel.Models;
 using BookingHotel.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,41 @@ namespace BookingHotel.Controllers
                 return BadRequest(ModelState);
             }
             catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut]
+        public IActionResult Edit(int id,TempRoomDTO tempGuestRooms)
+        {
+            try
+            {
+                var data = repositoryTempGuestRoom.EditTempRoom(id, tempGuestRooms);
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+                return BadRequest(ModelState);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetTempRoomByID")]
+        public IActionResult GetTempRoomByID(int id)
+        {
+            try
+            {
+                var data = repositoryTempGuestRoom.GetOne(id);
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+                return BadRequest(ModelState);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
